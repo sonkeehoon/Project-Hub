@@ -1,3 +1,3 @@
 # Project-Hub
 
-#### These are Python codes that I created
+#### These are Python projects that I created

@@ -11,7 +11,6 @@ import tkinter.messagebox as msgbox
 from tkinter.colorchooser import *
 
 
-
 def resource_path(relpath: str)-> str:
     
     try:
