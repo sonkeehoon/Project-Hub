@@ -1,4 +1,4 @@
-# 🌤️ 서울지역 미세먼지 & 날씨 정보 앱
+# 🌤️ [한국어] 서울지역 미세먼지 & 날씨 정보 앱
 
 ## 📌 소개
 실시간으로 **서울의 날씨와 미세먼지 정보**를 제공하는 앱입니다.  
@@ -15,28 +15,28 @@
 ## 🚀 실행 방법
 1. dist 폴더안에 Live_weather.exe를 실행합니다(다른 위치로 Live_weather.exe를 옮겨도 정상 실행 됩니다)
 
+<br>
+
 ---
 
-# 🌤️ Seoul Air Quality & Weather Information App
+<br>
+
+# 🌤️ [English] Seoul Air Quality & Weather Information App
 ===============================================
 
 ## 📌 Introduction
----------------
 This app provides real-time weather and air quality information for Seoul.  
 Users can check the current temperature, weather conditions, as well as the levels of fine dust and ultra-fine dust.
 
 ## ⚙️ Key Features
----------------
 * 🌡️ **Current Weather**: Displays temperature and weather conditions  
 * 🍃 **Air Quality Information**: Shows fine dust and ultra-fine dust levels  
 
 ## 🛠️ Technologies Used
----------------------
 * **Python**: Main logic implementation  
 * **Weather Source**: Weather and fine dust data from Naver's weather and air quality search results  
 
 ## 🚀 How to Run
--------------
 Run `Live_weather.exe` in the `dist` folder. (It will also work if you move `Live_weather.exe` to another location.)
 
 
