@@ -8,6 +8,7 @@ watermark.exe를 다른 위치에서 실행해도 문제없이 실행됩니다
 ------------------------------------------------------------------------------------
 app.py를 직접 실행하는 경우
 필수 라이브러리 설치: pip install -r requirements.txt
+python app.py
 
 ------------------------------------------------------------------------------------
 watermark.exe파일로 만드는 방법 : pyinstaller -w -F -n watermark --onefile --icon=water.ico --add-data "water.png;." app.py
