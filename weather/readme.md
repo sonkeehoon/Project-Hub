@@ -10,6 +10,7 @@
 
 ## 🛠️ 사용 기술
 - **Python**: 주요 로직 구현
+    - **날씨 출처**: naver의 날씨, 미세먼지 검색 결과
 
 ## 🚀 실행 방법
 1. dist 폴더안에 Live_weather.exe를 실행합니다(다른 위치로 Live_weather.exe를 옮겨도 정상 실행 됩니다)
