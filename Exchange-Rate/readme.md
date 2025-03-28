@@ -8,6 +8,7 @@
 ## ⚙️ 주요 기능
 - 💱 **실시간 환율 조회**: 최신 환율 정보를 제공합니다.
 - 🌏 **다양한 통화 지원**: 여러 국가의 통화를 확인할 수 있습니다.
+- 📂 **환율 정보 저장**: 현재 디렉토리에 `"세계환율"` 폴더를 생성하고, 환율 정보를 텍스트 파일로 저장합니다.
 
 ## 🛠️ 사용 기술
 - **Python**: 주요 로직 구현
@@ -32,6 +33,7 @@ Users can check the latest exchange rate information and view their desired curr
 ## ⚙️ Key Features
 - 💱 **Real-time Exchange Rate Lookup**: Provides the latest exchange rate information.  
 - 🌏 **Supports Various Currencies**: Allows users to check exchange rates for multiple countries.
+- 📂 **Save Exchange Rate Data**: Creates a `"GlobalExchangeRates"` folder in the current directory and saves exchange rate data as a text file.
 
 ## 🛠️ Technologies Used
 - **Python**: Core logic implementation  
