@@ -129,8 +129,8 @@ def makeWC(words):
 
     for tag in tag_count:
         
-        s = f" {tag['tag']:<14}"
-        f.write(str(s)+'\t'+str(tag['count'])+'\n')
+        s = f"{tag['tag']:-<10}"
+        f.write(str(s)+' '+str(tag['count'])+'\n')
     
     now_state += 25
     update_progress_bar(now_state)
