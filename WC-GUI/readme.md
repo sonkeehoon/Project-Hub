@@ -20,9 +20,15 @@
 - **워드클라우드:** `wordcloud`, `konlpy`
 
 ## 🔧 설치 방법
-1. 프로젝트를 클론합니다:
+1. 프로젝트를 클론합니다
    ```
    git clone https://github.com/your-username/repository-name.git
    cd repository-name
-2. 필요한 패키지를 설치합니다:
+2. 필요한 패키지를 설치합니다
     ```
+    pip install -r requirements.txt
+3. 프로그램을 실행합니다
+    ```
+    python app.py
+    또는
+    python3 app.py
