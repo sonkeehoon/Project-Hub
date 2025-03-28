@@ -16,4 +16,3 @@ fi
 echo "The current directory is ${TARGET_DIR}. Starting execution."
 pyinstaller -F -n ${EXE_FILE_NAME} --icon=마스크.ico app.py
 echo "Build completed: dist/${EXE_FILE_NAME}.exe"
- 
