@@ -32,7 +32,9 @@ if res.status_code == 200: # 정상 연결상태면
 
 else:
     print(res.status_code)
-
-
     
+try:
+    input()
     
+except EOFError:
+    pass
