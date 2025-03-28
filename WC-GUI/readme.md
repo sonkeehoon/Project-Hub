@@ -12,7 +12,7 @@
 
 ## 🛠 사용 기술
 - **언어:** Python
-- **GUI:** `tkinter`
+- **GUI 인터페이스:** `tkinter`
 - **크롤링:** `requests`, `BeautifulSoup`  
 - **데이터 분석:** `numpy` 
 - **시각화:** `matplotlib`
@@ -21,6 +21,7 @@
 
 ## 🔧 설치 방법
 1. 프로젝트를 클론합니다:
-   ```bash
    git clone https://github.com/your-username/repository-name.git
    cd repository-name
+2. 필요한 패키지를 설치합니다:
+    
