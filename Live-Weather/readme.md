@@ -38,5 +38,3 @@ Users can check the current temperature, weather conditions, as well as the leve
 
 ## 🚀 How to Run
 Run `live_weather.exe` in the `dist` folder. (It will also work if you move `live_weather.exe` to another location.)
-
-
