@@ -13,7 +13,7 @@
     - **날씨 출처**: naver의 날씨, 미세먼지 검색 결과
 
 ## 🚀 실행 방법
-1. dist 폴더안에 Live_weather.exe를 실행합니다(다른 위치로 Live_weather.exe를 옮겨도 정상 실행 됩니다)
+1. dist 폴더안에 live_weather.exe를 실행합니다(다른 위치로 live_weather.exe를 옮겨도 정상 실행 됩니다)
 
 <br>
 
@@ -37,6 +37,6 @@ Users can check the current temperature, weather conditions, as well as the leve
 * **Weather Source**: Weather and fine dust data from Naver's weather and air quality search results  
 
 ## 🚀 How to Run
-Run `Live_weather.exe` in the `dist` folder. (It will also work if you move `Live_weather.exe` to another location.)
+Run `live_weather.exe` in the `dist` folder. (It will also work if you move `live_weather.exe` to another location.)
 
 
