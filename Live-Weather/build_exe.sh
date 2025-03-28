@@ -12,5 +12,5 @@ fi
 
 echo "The current directory is 'weather'. Starting execution."
 pyinstaller -F -n Live_weather --onefile --icon=마스크.ico app.py
-echo "Build completed: dist/your_script.exe"
+echo "Build completed: dist/Live_weather.exe"
  
