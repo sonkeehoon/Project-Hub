@@ -3,7 +3,7 @@
 REPO_NAME="Project-Hub"
 CURRENT_DIR=$(pwd)
 TARGET_DIR="Live-Weather"
-EXE_FILE_NAME="Live_Weather"
+EXE_FILE_NAME="live_weather"
 ICO="마스크.ico"
 CODE="app.py"
 
