@@ -14,7 +14,7 @@
 ## 🛠 사용 기술
 - **언어:** Python
 - **GUI 인터페이스:** `tkinter`
-- **크롤링:** `requests`, `BeautifulSoup`  
+- **크롤링:** `urllib`, `BeautifulSoup`  
 - **데이터 분석:** `numpy` 
 - **시각화:** `matplotlib`
 - **이미지 처리:** `PIL (Pillow)`
@@ -48,7 +48,7 @@ This project is a Python-based application that crawls Naver search results, col
 ## 🛠 Technologies Used  
 - **Language:** Python  
 - **GUI Interface:** `tkinter`  
-- **Web Crawling:** `requests`, `BeautifulSoup`  
+- **Web Crawling:** `urllib`, `BeautifulSoup`  
 - **Data Analysis:** `numpy`  
 - **Visualization:** `matplotlib`  
 - **Image Processing:** `PIL (Pillow)`  
