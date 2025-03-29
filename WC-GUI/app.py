@@ -1,13 +1,11 @@
 import os, sys
 import tkinter as tk
-from tkinter import filedialog
-from tkinter import messagebox as msgbox
+from tkinter import filedialog, messagebox as msgbox
 import tkinter.ttk as ttk
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
-import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 import urllib.request
@@ -15,192 +13,207 @@ import urllib.parse
 from konlpy.tag import Okt
 from collections import Counter
 
+# Constants
+BLOG = "blog"
+CAFE = "cafe"
+NEWS = "news"
 
+# Calculate the start year and end year (start, today)
+today = datetime.today().strftime("%Y.%m.%d")
+start = today.split('.')
+today = today.split('.')
+year = 3 # Search for results from the past three years
+start[0] = str(int(start[0]) - year)
+start = ''.join(start)
+today = ''.join(today)
+
+
+# function
 def update_progress_bar(state):
     p_var.set(state)
     progress_bar.update()
     
 def naver_view_scrap(words):
-    str_n = ""
-    # 시작년도와 끝 년도를 계산(start, today)
-    today = datetime.today().strftime("%Y.%m.%d")
-    start = today.split('.')
-    today = today.split('.')
-    year = 3 # 몇년치 결과를 검색할지
-    start[0] = str(int(start[0]) - year)
-    start = ''.join(start)
-    today = ''.join(today)
     
-    # 입력한 단어(words) 검색 결과를 스크래핑
-    word = urllib.parse.quote_plus(words)
-    url = f'''https://search.naver.com/search.naver?where=view&sm=tab_viw.blog&query={word}&nso=so%3Ar%2Cp%3Afrom{start}to{today}'''
-    html = urllib.request.urlopen(url)
-    soup = BeautifulSoup(html,'html.parser')
-    title = soup.find_all(class_ = "api_txt_lines total_tit")
-    content = soup.find_all(class_ = "api_txt_lines dsc_txt")
-    # 스크래핑 해온 텍스트를 str_n 변수에 저장
-    for t in title:
-        str_n += t.get_text()
-    for c in content:
-        str_n += c.get_text()
+    """This function crawls Naver blogs and cafes."""
+    
+    input_txt= ""
+    
+    # blog
+    blog_url= f'''https://search.naver.com/search.naver?ssc=tab.{BLOG}.all&sm=tab_jum&query={words}&nso=p%3Afrom{start}to{today}'''
+    blog_html= urllib.request.urlopen(blog_url)
+    blog_soup= BeautifulSoup(blog_html, 'html.parser')
+    blog_titles= blog_soup.find_all("a", "title_link")
+    blog_contents= blog_soup.find_all("a", "dsc_link")
+    
+    for blog_title, blog_content in zip(blog_titles, blog_contents):
+        input_txt+= blog_title.get_text()
+        input_txt+= blog_content.get_text()
         
-    return str_n
+    # cafe
+    cafe_url= f'''https://search.naver.com/search.naver?ssc=tab.{CAFE}.all&sm=tab_jum&query={words}&nso=p%3Afrom{start}to{today}'''
+    cafe_html= urllib.request.urlopen(cafe_url)
+    cafe_soup= BeautifulSoup(cafe_html, 'html.parser')
+    cafe_titles= cafe_soup.find_all("a", "title_link")
+    cafe_contents= cafe_soup.find_all("a", "dsc_link")
+    
+    for cafe_title, cafe_content in zip(cafe_titles, cafe_contents):
+        input_txt+= cafe_title.get_text()
+        input_txt+= cafe_content.get_text()
+    
+    return input_txt
 
 def naver_news_scrap(words):
-    today = datetime.today().strftime("%Y.%m.%d")
-    start = today.split('.')
-    year = 3
-    start[0] = str(int(start[0]) - year)
-    start = '.'.join(start)
-    url = f"""https://search.naver.com/search.naver?where=news&sm=tab_pge&query={words}
-    &sort=1&photo=0&field=0&pd=3&ds={start}&de={today}&mynews=0&office_type=0&office_section_code=0
-    &news_office_checked=&nso=so:dd,p:from20190516to20220516,a:all&start=00"""
-    str_n = ""
-    for i in range(5):
-        url = url[:-2] + str(i) + "1"
-        res = requests.get(url)
-        res.raise_for_status()
-        soup = BeautifulSoup(res.text,"lxml")
+    
+    input_txt= ""
 
-        l1 = soup.find_all("a",attrs={"class":"news_tit"})
-        l2 = soup.find_all("a",attrs={"class":"api_txt_lines dsc_txt_wrap"})
-        l3 = l1 + l2
-        for l in l3:
-            str_n = str_n + l.get_text()
-            
-    return str_n
+    news_url= f'''https://search.naver.com/search.naver?ssc=tab.{NEWS}.all&where={NEWS}&sm=tab_jum&query={words}&nso=p%3Afrom{start}to{today}'''
+    news_html= urllib.request.urlopen(news_url)
+    news_soup= BeautifulSoup(news_html, 'html.parser')
+    news_titles= news_soup.find_all("a", "news_tit")
+    news_contents= news_soup.find_all("a", "api_txt_lines dsc_txt_wrap")
+
+    for news_title, news_content in zip(news_titles, news_contents):
+        input_txt+= news_title.get_text()
+        input_txt+= news_content.get_text()
+
+    return input_txt
 
 def resource_path(relative_path):
     try:
-        base_path = sys._MEIPASS
+        base_path= sys._MEIPASS
     except Exception:
-        base_path = os.path.abspath(".")
+        base_path= os.path.abspath(".")
     
     return os.path.join(base_path, relative_path)
 
 def browse_dest_path():
-    folder_selected = filedialog.askdirectory()
-    if folder_selected == "": # 사용자가 취소를 누를때
-        print("폴더 선택 취소")
+    folder_selected= filedialog.askdirectory()
+    if folder_selected== "": # When the user clicks cancel
+        print("Cancel folder selection")
         return
-    # print(folder_selected)
-    txt_dest_path.delete(0,tk.END)
-    txt_dest_path.insert(0,folder_selected)
+    txt_dest_path.delete(0, tk.END)
+    txt_dest_path.insert(0, folder_selected)
 
-def exit_window_x(): # x버튼을 눌러도 종료되지 않던 버그를 수정하기 위한 함수
-    print("프로그램을 종료합니다.")
+def exit_window_x(): 
+    # A function to fix the bug where the application doesn't close when the 'X' button is pressed
+    print("The program will exit")
     win.quit() 
 
 def makeWC(words):
-    cand_mask = np.array(Image.open(resource_path('./circle.png'))) # 동그란 워드클라우드를 만들기 위한 판
-    txt = ""
-    now_state = 0
-    # 뉴스 검색 결과 크롤링
-    txt += naver_news_scrap(words)
-    now_state += 25
+    
+    cand_mask= np.array(Image.open(resource_path('./circle.png'))) # A canvas to create a circular wordcloud
+    
+    input_txt= ""
+    now_state= 0
+    parsed_word= urllib.parse.quote_plus(words)
+    
+    input_txt+= naver_news_scrap(parsed_word)
+    now_state+= 25
     update_progress_bar(now_state)
 
-    txt += naver_view_scrap(words)
-    now_state += 25
+    input_txt+= naver_view_scrap(parsed_word)
+    now_state+= 25
     update_progress_bar(now_state)
     
     
-    nlpy = Okt()
-    nouns = nlpy.nouns(txt)
-    count = Counter(nouns)
-    tag_count = []
-    tags = []
+    nlpy= Okt()
+    nouns= nlpy.nouns(input_txt)
+    count= Counter(nouns)
+    tag_count= []
+    tags= []
 
     for n, c in count.most_common(50):
         
         dics = {'tag': n, 'count': c}
-
-        if len(dics['tag']) >= 2 and len(tags) <= 49:
-
+        
+        if len(dics['tag'])>= 2 and len(tags)<= 49:
+            
             tag_count.append(dics)
-
             tags.append(dics['tag'])
             
-            
-            
-    freq_file_name = words + "_frequency.txt"
-    freq_dest_path = os.path.join(txt_dest_path.get(),freq_file_name)
-    f = open(freq_dest_path,"w",encoding="utf-8")
+    freq_file_name= words+ "_frequency.txt"
+    freq_dest_path= os.path.join(txt_dest_path.get(), freq_file_name)
+    f= open(freq_dest_path,"w", encoding="utf-8")
 
     for tag in tag_count:
         
-        s = f"{tag['tag']:-<10}"
+        s= f"{tag['tag']:-<10}"
         f.write(str(s)+' '+str(tag['count'])+'\n')
     
-    now_state += 25
+    now_state+= 25
     update_progress_bar(now_state)
             
-    wordcloud = WordCloud(
-        font_path = 'malgun.ttf',
-        background_color = 'white',
-        mask = cand_mask
-    ).generate(txt)
+    wordcloud= WordCloud(
+        font_path= 'malgun.ttf',
+        background_color= 'white',
+        mask= cand_mask
+    ).generate(input_txt)
     
-    plt.figure(figsize = (8,8))
-    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.figure(figsize= (8, 8))
+    plt.imshow(wordcloud, interpolation= 'bilinear')
     plt.axis('off')
-    file_name = words + ".png"
-    dest_path = os.path.join(txt_dest_path.get(),file_name)
+    file_name= words+ ".png"
+    dest_path= os.path.join(txt_dest_path.get(), file_name)
     plt.savefig(dest_path)
-    now_state += 25
+    now_state+= 25
     update_progress_bar(now_state)
 
 def btnClick():
-    if len(text.get()) == 0:
-        msgbox.showwarning("경고", "검색어를 입력하세요")
+    
+    if len(text.get())== 0:
+        msgbox.showwarning("Warning", "Please enter a search term")
         return
-    elif len(txt_dest_path.get()) == 0:
-        msgbox.showwarning("경고", "저장 경로를 선택하세요")
+    
+    elif len(txt_dest_path.get())== 0:
+        msgbox.showwarning("Warning", "Please select a save path")
         return
         
     try:
-        words = text.get()
+        words= text.get()
         makeWC(words)
-        msgbox.showinfo("생성 완료", "워드 클라우드 생성과 빈도수 분석이 완료되었습니다\n저장 경로를 확인하세요")
+        msgbox.showinfo("Completed", "The word cloud generation and frequency analysis are complete.\nPlease check the save path.")
         
     except Exception as err:
-        msgbox.showerror("error",err)
+        msgbox.showerror("error", err)
     
-win = tk.Tk()
+
+# Window
+win= tk.Tk()
 win.title("WordCloud")
 win.geometry('300x300')
 
-# 제목
-label = tk.Label(win, text="워드 클라우드 만들기")
-label.pack(pady = 5)
+# title
+label= tk.Label(win, text= "Creating a word cloud")
+label.pack(pady= 5)
 
-# 검색어 입력 프레임
-frame = tk.LabelFrame(win,text="검색어 입력")
-frame.pack(fill = "x", padx = 5, pady = 5)
+# Search term input frame
+frame= tk.LabelFrame(win, text= "Enter search term")
+frame.pack(fill= "x", padx= 5, pady= 5)
 
-text = tk.Entry(frame)
-text.pack(side = "left", fill = "x", expand = True, padx = 5, pady = 5, ipady = 4)
+text= tk.Entry(frame)
+text.pack(side= "left", fill= "x", expand= True, padx= 5, pady= 5, ipady= 4)
 
-btn = tk.Button(frame, text = "만들기", width = 5, command = btnClick)
-btn.pack(side = "left", padx = 5, pady = 5)
+btn= tk.Button(frame, text= "Create", width= 5, command= btnClick)
+btn.pack(side= "left", padx= 5, pady= 5)
 
-# 저장경로 지정
-path_frame = tk.LabelFrame(win, text = "저장경로")
-path_frame.pack(fill = "x", padx = 5, pady = 5, ipady = 5)
+# Specify save path
+path_frame= tk.LabelFrame(win, text= "Save path")
+path_frame.pack(fill= "x", padx= 5, pady= 5, ipady= 5)
 
-txt_dest_path = tk.Entry(path_frame)
-txt_dest_path.pack(side = "left", fill = "x", expand = True, padx = 5, pady = 5, ipady = 4) # 높이 변경
+txt_dest_path= tk.Entry(path_frame)
+txt_dest_path.pack(side= "left", fill= "x", expand= True, padx= 5, pady= 5, ipady= 4) # Change height
 
-btn_dest_path = tk.Button(path_frame, text = "찾아보기", width = 10, command = browse_dest_path)
-btn_dest_path.pack(side = "right", padx = 5, pady = 5)
+btn_dest_path= tk.Button(path_frame, text= "Browse", width= 10, command= browse_dest_path)
+btn_dest_path.pack(side= "right", padx= 5, pady= 5)
 
-# 진행상황
-frame_progress=tk.LabelFrame(win, text = "진행상황")
-frame_progress.pack(fill="x", padx = 5, pady = 5, ipady = 5)
+# Progress
+frame_progress= tk.LabelFrame(win, text= "Progress")
+frame_progress.pack(fill= "x", padx= 5, pady= 5, ipady= 5)
 
-p_var=tk.DoubleVar()
-progress_bar = ttk.Progressbar(frame_progress, maximum = 100, variable = p_var)
-progress_bar.pack(fill = "x", padx = 5, pady = 5)
+p_var= tk.DoubleVar()
+progress_bar= ttk.Progressbar(frame_progress, maximum= 100, variable= p_var)
+progress_bar.pack(fill= "x", padx= 5, pady= 5)
 
 win.protocol('WM_DELETE_WINDOW', exit_window_x)
 win.mainloop()

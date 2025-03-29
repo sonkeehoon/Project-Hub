@@ -1,4 +1,4 @@
-# 네이버 검색 결과 크롤링 & 워드클라우드 생성기
+# [한국어] 네이버 검색 결과 크롤링 & 워드클라우드 생성기
 ===============================================
 
 ## 📖 소개
@@ -19,16 +19,49 @@
 - **이미지 처리:** `PIL (Pillow)`
 - **워드클라우드:** `wordcloud`, `konlpy`
 
-## 🔧 설치 방법
-1. 프로젝트를 클론합니다
+## 🔧 실행 방법
+1. WC_GUI.zip 압축을 해제합니다
+2. app.py를 실행합니다
+
+<br>
+
+---
+
+<br>
+
+# [English] Naver Search Results Crawler & Word Cloud Generator  
+===============================================  
+
+## 📖 Introduction  
+This project is a Python-based application that crawls Naver search results, collects text data, performs frequency analysis, and generates a word cloud.  
+
+## 🚀 Key Features  
+- Crawl Naver search results (keyword input)  
+- Perform keyword frequency analysis on collected data  
+- Visualize data with a word cloud  
+- Save results as a text file (`.txt`)  
+
+## 🛠 Technologies Used  
+- **Language:** Python  
+- **GUI Interface:** `tkinter`  
+- **Web Crawling:** `requests`, `BeautifulSoup`  
+- **Data Analysis:** `numpy`  
+- **Visualization:** `matplotlib`  
+- **Image Processing:** `PIL (Pillow)`  
+- **Word Cloud:** `wordcloud`, `konlpy`  
+
+## 🔧 How to Run  
+1. Clone the repository  
    ```
-   git clone https://github.com/your-username/repository-name.git
+   git clone https://github.com/your-username/repository-name.git  
    cd repository-name
-2. 필요한 패키지를 설치합니다
+2. Install the required packages
     ```
     pip install -r requirements.txt
-3. 프로그램을 실행합니다
+3. Run the application
     ```
-    python app.py
-    또는
-    python3 app.py
+    python app.py  
+    or  
+    python3 app.py  
+    or  
+    python.exe -m app
