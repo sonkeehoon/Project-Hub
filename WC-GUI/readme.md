@@ -20,8 +20,10 @@
 - **워드클라우드:** `wordcloud`, `konlpy`
 
 ## 🔧 실행 방법
-1. WC_GUI.zip 압축을 해제합니다
-2. app.py를 실행합니다
+**⚠️ 주의사항: 파이썬이 설치되어 있어야 합니다!!**
+1. WC_GUI.zip 을 다운받고 압축을 해제합니다
+2. install_dependencies.bat 파일을 실행합니다
+3. app.py를 실행합니다
 
 <br>
 
@@ -50,18 +52,8 @@ This project is a Python-based application that crawls Naver search results, col
 - **Image Processing:** `PIL (Pillow)`  
 - **Word Cloud:** `wordcloud`, `konlpy`  
 
-## 🔧 How to Run  
-1. Clone the repository  
-   ```
-   git clone https://github.com/your-username/repository-name.git  
-   cd repository-name
-2. Install the required packages
-    ```
-    pip install -r requirements.txt
-3. Run the application
-    ```
-    python app.py  
-    or  
-    python3 app.py  
-    or  
-    python.exe -m app
+## 🔧 How to Run
+**⚠️ Warning: Python must be installed!!**
+1. Download WC_GUI.zip and extract it.
+2. Run the install_dependencies.bat file.
+3. Run app.py.
