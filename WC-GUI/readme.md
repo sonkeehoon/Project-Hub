@@ -6,6 +6,7 @@
 
 ## 🚀 주요 기능
 - 네이버 검색 결과 크롤링 (키워드 입력)
+    - 블로그, 카페, 뉴스
 - 수집한 데이터에서 키워드 빈도수 분석
 - 워드클라우드 시각화
 - 결과 데이터 저장 (txt파일)
@@ -38,7 +39,8 @@
 This project is a Python-based application that crawls Naver search results, collects text data, performs frequency analysis, and generates a word cloud.  
 
 ## 🚀 Key Features  
-- Crawl Naver search results (keyword input)  
+- Crawl Naver search results (keyword input)
+    - Blog, Cafe, News
 - Perform keyword frequency analysis on collected data  
 - Visualize data with a word cloud  
 - Save results as a text file (`.txt`)  
