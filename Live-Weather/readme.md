@@ -1,4 +1,4 @@
-# 🌤️ [한국어] 서울지역 미세먼지 & 날씨 정보 앱
+# 🌤️ `한국어` 서울지역 미세먼지 & 날씨 정보 앱
 
 ## 📌 소개
 실시간으로 **서울의 날씨와 미세먼지 정보**를 제공하는 앱입니다.  
@@ -21,7 +21,7 @@
 
 <br>
 
-# 🌤️ [English] Seoul Air Quality & Weather Information App
+# 🌤️ `English` Seoul Air Quality & Weather Information App
 ===============================================
 
 ## 📌 Introduction
