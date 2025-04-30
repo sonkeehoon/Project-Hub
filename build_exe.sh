@@ -2,9 +2,9 @@
 
 REPO_NAME="Project-Hub"
 CURRENT_DIR=$(pwd)
-script1="./Exchange-Rate/build_exe.sh"
-script2="./Live-Weather/build_exe.sh"
-script3="./Watermark/build_exe.sh"
+script1="./exchange_rate/build_exe.sh"
+script2="./live_weather/build_exe.sh"
+script3="./watermark/build_exe.sh"
 
 
 if [[ "${CURRENT_DIR##*/}" == ${REPO_NAME} ]]; then
@@ -21,4 +21,4 @@ $script1
 $script2
 $script3
 
-echo "Build completed: Please check the dist folder in each folder (excluding WC-GUI)"
+echo "Build completed: Please check the dist folder in each folder (excluding wc_gui)"
