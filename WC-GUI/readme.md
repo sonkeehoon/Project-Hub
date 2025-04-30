@@ -24,7 +24,7 @@
 **⚠️ 주의사항: 파이썬이 설치되어 있어야 합니다!!**
 1. WC_GUI.zip 을 다운받고 압축을 해제합니다
 2. install_dependencies.bat 파일을 실행합니다
-3. app.pyx를 실행합니다
+3. app.pyw를 실행합니다
 
 <br>
 
@@ -58,4 +58,4 @@ This project is a Python-based application that crawls Naver search results, col
 **⚠️ Warning: Python must be installed!!**
 1. Download WC_GUI.zip and extract it.
 2. Run the install_dependencies.bat file.
-3. Run app.pyx.
+3. Run app.pyw.
