@@ -7,7 +7,7 @@
 
 ## 📂 폴더 구조
 ```
-Project_Hub/
+Project-Hub/
   ├── Exchange-Rate/
   ├── Live-Weather/
   ├── Watermark/
