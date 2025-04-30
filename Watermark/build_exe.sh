@@ -2,7 +2,7 @@
 
 REPO_NAME="Project-Hub"
 CURRENT_DIR=$(pwd)
-TARGET_DIR="watermark"
+TARGET_DIR="Watermark"
 EXE_FILE_NAME="watermark"
 ICO="water.ico"
 logo="water.png"
