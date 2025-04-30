@@ -2,7 +2,7 @@
 
 REPO_NAME="Project-Hub"
 CURRENT_DIR=$(pwd)
-TARGET_DIR="Exchange-Rate"
+TARGET_DIR="exchange_rate"
 EXE_FILE_NAME="exchange_rate"
 ICO="exchange_rate1.ico"
 CODE="app.py"
