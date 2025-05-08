@@ -111,6 +111,10 @@ def exit_window_x():
 
 def makeWC(words):
     
+    # Set working directory to WC-GUI
+    script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
+    os.chdir(script_dir)
+    
     cand_mask= np.array(Image.open(resource_path('./circle.png'))) # A canvas to create a circular wordcloud
     
     input_txt= ""
