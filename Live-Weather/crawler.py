@@ -39,3 +39,4 @@ if ultrafine_dust.status_code == 200:
     ULTRAFINE_DUST: list = temp.get_text().strip().split()
     if __name__ == "__main__":
         print(ULTRAFINE_DUST)
+
